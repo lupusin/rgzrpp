@@ -23,6 +23,7 @@ jobs:
 
       - name: Run unit tests
         run: |
+          export PYTHONPATH="$PYTHONPATH:$GITHUB_WORKSPACE"
           pytest -q
 
       - name: Run Bandit
