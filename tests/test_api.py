@@ -12,10 +12,11 @@ def test_shorten_and_follow_and_stats(client):
     assert r.status_code == 201
     code = r.get_json()["short_code"]
 
-    r2 = client.get(f"/{code}")
+    r2 = client.get("/", query_string={"short": code})
+
     assert r2.status_code in (301, 302)
 
-    r3 = client.get(f"/stats/{code}")
+    r3 = client.get("/stats/", query_string={"short": code})
     assert r3.status_code == 200
     data = r3.get_json()
     assert data["clicks"] >= 1
