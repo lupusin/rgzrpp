@@ -27,8 +27,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Set PYTHONPATH
-        run: echo "PYTHONPATH=${{ github.workspace }}" >> $GITHUB_ENV
-        # переменные для следующих команд задаются через GITHUB_ENV [web:275]
+        run: echo "PYTHONPATH=${{ github.workspace }}" >> $GITHUB_ENV 
 
       - name: Run unit tests
         run: pytest -q
